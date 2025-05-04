@@ -1,0 +1,604 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: #e4e1e1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth;
+}
+
+body.dark-mode {
+    background-color: #353535;
+    color: white;
+}
+
+/* Navigation Styles */
+.header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(206, 206, 206, 0.8); /* Semi-transparent white */
+    color: rgb(19, 3, 3);
+    padding: 20px 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    opacity: 0.9; /* Slightly transparent background */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    padding: 0 40px; /* Increased padding for better spacing from the dark toggle */
+}
+
+.logo {
+    font-size: 1.9rem;
+    font-family: Garamond, serif;
+    font-weight: bold;
+    color: #292727; /* Dark color for better contrast */
+    margin-right: 900px; /* Push logo slightly to the right */
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Adjusted gap for better spacing */
+    margin-right: 100px;
+    padding: 0;
+    position: relative;
+    z-index: 1; /* Ensure links are above the background */
+    transition: all 0.3s ease;
+    opacity: 0.9; /* Slightly transparent background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px; /* Rounded corners for the nav links */
+    padding: 10px 20px; /* Added padding for better spacing */
+    background-color: rgba(226, 224, 224, 0.8); /* Lightened background */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Light border */
+    border-radius: 10px; /* Rounded corners for the nav links */
+}
+
+.nav-links li {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.nav-links a {
+    color: #1a1919; /* Dark color for better contrast */
+    text-decoration: none;
+    font-size: 1.5rem; /* Increased font size */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #007BFF;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007BFF;
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #161313;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.1); /* Light background for visibility */
+    transition: background-color 0.3s ease;
+    margin-left: 1px; /* Add spacing between dark toggle and nav links */
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Darker background on hover */
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        width: 200px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.hero-left img {
+    width: 600px;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    margin-top: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 50px; /* Move image to the right */
+}
+
+.hero-left img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-right {
+    height: auto;
+    margin-top: 10px; /* Added margin to create spacing below */
+    flex: 1;
+    text-align: left;
+    padding-left: 0; /* Removed extra padding to align with icons */
+    margin-left: px; /* Adjusted margin to move slightly more to the left */
+}
+
+.hero-right h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.hero-right p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+    text-align: left;
+}
+
+/* Button Styles */
+.hero-buttons {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.btn-primary, .btn-outline {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6b6b6b;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: #2a2a2a;
+    border: 2px solid #2a2a2a;
+    border-radius: 20px; /* Increased border radius */
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #8a8888;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: rgba(163, 153, 153, 0.05);
+    color: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+.btn-outline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Social Icons */
+.social-icons-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+}
+
+.social-icons-horizontal {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-left: -350px; /* Adjust this value as needed to move left */
+}
+
+.social-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8); /* Lightened background */
+    backdrop-filter: blur(10px);
+    opacity: 0.9; /* Slightly transparent background */
+    -webkit-backdrop-filter: blur(10px);    
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Light border */
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+.social-icon img {  
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Dark Mode Styles */
+.dark-mode .btn-primary {
+    background-color: #ffffff;
+    color: #2a2a2a;
+    border-color: #ffffff;
+}
+
+.dark-mode .btn-outline {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.dark-mode .btn-outline:hover {
+    background-color: #ffffff;
+    color: #2a2a2a;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .hero-left img {
+        width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .hero-left img {
+        width: 100%;
+        max-width: 400px;
+        margin: 2rem auto;
+    }
+
+    .hero-right {
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    .hero-buttons,
+    .social-icons-container {
+        justify-content: center;
+    }
+}
+/* === Glass Card Sections === */
+.glass-card {
+    background: rgba(228, 228, 228, 0.8); /* Lightened background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Light border */ 
+    border-radius: 10px; /* Rounded corners for the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    margin: 0 auto;
+    border-radius: 15px;
+    margin: 15px auto;
+    padding: 30px; /* Increased padding for a larger appearance */
+    max-width: 1200px; /* Further increased max width for a wider box */
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s ease, transform 0.3s ease;
+    margin-top: 0.5px;
+}
+
+.glass-card a {
+    font-size: 30px; /* Increased font size for better visibility */
+    color: #000000;
+    text-align: center; /* Centered heading */
+}
+.glass-card h2 {
+    font-size: 10pxrem; /* Increased font size for better visibility */
+    color: #000000;
+    margin-bottom: 1rem; /* Increased margin for better spacing */
+    text-align: center; /* Centered heading */
+}
+.first-sections {
+    display: flex;
+    justify-content: center; /* Center all items horizontally */
+    align-items: center; /* Center vertically, if necessary */
+    gap: 1.5rem; /* Add a little space between the sections */
+    margin-top: 3rem;
+  }
+  .services-section {
+    flex: 1;    
+    max-width: 50%;
+    padding: 1rem; /* reasonable padding */
+    min-width: 150px;
+  }
+
+.services-section .glass-card {
+        
+    max-width: 50px;    /* smaller width */
+    min-width: 150px;   /* smaller width */
+    height: 200px;     /* smaller height */
+    padding: 10px;       /* reduce padding */
+    margin: 0 auto;
+  }
+  
+
+.glass-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+
+}
+.web-section, .mobile-section, .pm-section {
+    max-width: 25%; /* Set to 1/3 of the container for even distribution */
+    padding: 2px;
+    font-size: 10px;
+    font-size-adjust: 0.8rem; 
+    text-align: top;
+    background: rgba(255, 255, 255, 0.8); /* Lightened background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Light border */
+    border-radius: 10px;
+    background: rgba(180, 180, 180, 0.8); /* Optional: add background to card */
+    margin-bottom: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Optional: add shadow for depth */
+    /* ✨ Hover effect */
+}
+.web-section:hover, .mobile-section:hover, .pm-section:hover {
+    transform: translateY(-3px) scale(1.02); /* Slightly larger scale on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for more depth */
+}
+  
+  
+/* ✨ Hover effect */
+.glass-card:hover {
+    transform: translateY(-3px) scale(1.02); /* Slightly larger scale on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow for more depth */
+}
+  
+/* === Card Content Styling === */
+.glass-card-content h2 {
+    font-size: 40px; /* Slightly larger font size */
+    color: #333;
+    display: flex;  
+    margin-bottom: 1rem; /* Increased margin for better spacing */
+    text-align: center; /* Centered heading */
+    margin-top: 0.5px; /* Adjusted margin for better spacing */
+    margin-left: 0px; /* Adjusted margin to move slightly more to the left */
+    margin-top:0.5px;
+}
+  
+.glass-card-content p {
+    font-size: 25px; /* Slightly larger font size */
+    color: #272626;
+    margin-bottom: 1 rem;
+}
+  
+.glass-card-content ul {
+    list-style-type: disc;
+    margin-left: 20px; /* Increased margin for better spacing */
+    padding-left: 1rem;
+}
+  
+/* === Buttons / Links in Cards === */
+.glass-card-content a {
+    display: inline-block;
+    margin-top: 20px; /* Increased margin for better spacing */
+    padding: 12px 24px; /* Larger button size */
+    background-color: #2a2a2a;
+    color: white;
+    border-radius: 4px; /* Increased border radius for a softer look */
+    font-size: 1.1rem; /* Slightly larger font size */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.glossy-card a {
+    display: inline-block;
+    margin-top: 15px; /* Increased margin for better spacing */
+    padding: 5px 5px; /* Larger button size */
+   
+    color: rgb(0, 0, 0);
+    border-radius: 20px; /* Increased border radius for a softer look */
+    font-size: 1.7rem; /* Slightly larger font size */
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+
+}
+.glossy-card h2 {
+    font-size: 40px; /* Slightly larger font size */
+    color: #333;
+    display: flex;
+    margin-top:0.5px;
+}
+  
+.glass-card-content a:hover {
+    background-color: #4f4f50;
+    transform: scale(1.05); /* Slightly larger scale on hover */
+}
+  
+  
+.services {
+    flex: 1;
+    max-width: 100%;
+    padding: 2rem; /* reasonable padding */
+    font-size: 1.5rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+
+
+.contact {
+    flex: 1;
+    max-width: 65%; /* Further increased max width for larger box */
+    box-sizing: border-box;
+    padding: 3.5rem; /* Increased padding for a larger appearance */
+    font-size: 1.6rem; /* Slightly larger font size */
+    margin-top: 500px;
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: rgba(206, 206, 206, 0.8); /* Semi-transparent white */
+    color: rgb(19, 3, 3);
+    opacity: 0.9; /* Slightly transparent background */
+    z-index: 1000;
+    position: sticky;
+    backdrop-filter: blur(10px);
+    
+}
+.social-icons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.social-icons-horizontal {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.social-icons-horizontal a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.social-icons-horizontal a:hover .social-icon {
+    transform: scale(1.2);
+}
+/* Container for dropdown */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown hidden by default */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%; /* below the link */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.08); /* transparent white */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 8px;
+    list-style: none;
+    padding: 5px 0;
+    min-width: 180px;
+    text-align: center;
+    opacity: 0.9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 999;
+  }
+  
+  /* Show dropdown on hover */
+  .dropdown-container:hover .dropdown {
+    display: block;
+  }
+  
+  /* Dropdown items */
+  .dropdown li {
+    padding: 8px 15px;
+  }
+  
+  /* Link styles */
+  .dropdown li a {
+    font-size: 13px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Hover effect for items */
+  .dropdown li a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+  }
